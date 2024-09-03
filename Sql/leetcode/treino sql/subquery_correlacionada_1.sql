@@ -28,3 +28,27 @@ where preco > (
     From produtos p2 
     Where p2.categoria = produtos.categoria
     ); 
+
+
+-- Desafio:
+-- Tabela: Clientes
+-- Colunas: id, nome, cidade, compra_total
+-- Objetivo: Encontre os clientes que têm um compra_total acima da média das compras totais dos clientes na sua própria cidade.
+
+SELECT id, nome, cidade 
+FROM clientes 
+WHERE compra_total > (
+    SELECT AVG(compra_total)
+    FROM clientes c2
+    WHERE c2.cidade = clientes.cidade
+);
+
+
+-- Desafio:
+-- Tabela: Vendas
+-- Colunas: id, vendedor, valor
+-- Objetivo: Encontre os vendedores que realizaram vendas com um valor acima da média das vendas feitas por todos os vendedores.
+
+SELECT id, vendedor 
+FROM vendas 
+WHERE valor > (SELECT AVG(valor) FROM vendas);
