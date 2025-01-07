@@ -5,4 +5,4 @@ From
 Where
     Extract(month from joining_date) >= 4
 Group By
-    department
+    department;
